@@ -1,5 +1,5 @@
 #include <GL/glew.h>
-#include <GL/glut.h>
+#include <GLFW/glfw3.h>
 #include <cuda_gl_interop.h>
 #include <cuda_runtime.h>
 
@@ -92,9 +92,15 @@ size_t computeN(const float &r)
 
 int main(int argc, char **argv)
 {
+  if (!glfwInit())
+  {
+      cerr << "glfw init failed" << endl;
+      exit(EXIT_FAILURE);
+  }
 
-  glutInit(&argc, argv);
-  glutCreateWindow(""); //create the context
+  glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
+  GLFWwindow* window = glfwCreateWindow(640, 480, "My Title", NULL, NULL);
+  glfwMakeContextCurrent(window);
   glewInit();
 
   float r = 8.5 / 4096;

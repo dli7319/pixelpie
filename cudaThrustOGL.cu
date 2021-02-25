@@ -45,7 +45,8 @@ void cudaThrustOGL::cudaInit(const GLuint &texID, const GLuint &bufID,
   GLuint uintw = (GLuint)width_;
   err_ = cudaMemcpyToSymbol(texwidth, &uintw, sizeof(uintw));
   if (err_ != cudaSuccess) {
-    std::cerr << "cudaMemcpyToSymbol error" << err_ << " " << cudaGetErrorName(err_) << std::endl;
+    std::cerr << "cudaMemcpyToSymbol error" << err_ << " "
+              << cudaGetErrorName(err_) << std::endl;
   }
 
   seed_ = (unsigned int)time(NULL); // 12345
