@@ -22,6 +22,7 @@ void runExp(const size_t &w, const size_t &h, const size_t &nd,
 {
 
   PoissonDiskSampler *oglr = new PoissonDiskSampler(w, h, nd, r);
+  size_t usedmem = oglr->init();
 
   size_t emptypixels = 0;
   size_t itr = 0;
